@@ -49,9 +49,9 @@ public class SplashScreen extends AppCompatActivity {
             }
         });
 
-        String tekst = getIntent().getStringExtra("text");
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(tekst);
+//        String tekst = getIntent().getStringExtra("text");
+//        TextView textView = findViewById(R.id.textView);
+//        textView.setText(tekst);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(SplashScreen.this, LoginScreen.class);

@@ -21,7 +21,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:text="TextView"
+            android:text="@string/splashtext"
             android:textAlignment="center"
             android:visibility="visible" />
 
