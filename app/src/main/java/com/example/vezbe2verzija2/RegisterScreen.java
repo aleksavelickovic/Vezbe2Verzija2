@@ -2,6 +2,7 @@ package com.example.vezbe2verzija2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,17 +13,27 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.vezbe2verzija2.databinding.ActivityRegisterScreenBinding;
+
 public class RegisterScreen extends AppCompatActivity {
+
+    public ActivityRegisterScreenBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_screen);
 
-        Button potvrdibtn = findViewById(R.id.potvrdibutton);
-        EditText emailtext = findViewById(R.id.editTextTextEmailAddress);
-        EditText pswtext = findViewById(R.id.editTextTextPassword);
+        binding = ActivityRegisterScreenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        //Button potvrdibtn = findViewById(R.id.potvrdibutton);
+        Button potvrdibtn = binding.potvrdibutton;
+        //EditText emailtext = findViewById(R.id.editTextTextEmailAddress);
+        EditText emailtext = binding.editTextTextEmailAddress;
+        //EditText pswtext = findViewById(R.id.editTextTextPassword);
+        EditText pswtext = binding.editTextTextPassword;
+
         potvrdibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
