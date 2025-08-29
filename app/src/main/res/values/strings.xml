@@ -9,7 +9,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="splashtext">Dobrodosli! Ovo je Splash Screen!\nZa 5 sekundi cete biti prebaceni na Login Screen</string>
+    <string name="splashtext">Dobrodosli! Ovo je Splash Screen!\nZa 5 sekundi cete biti prebaceni na Login Screen!!!</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
