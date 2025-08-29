@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             Intent intent = new Intent(this, SplashScreen.class);
-            intent.putExtra("text", "Dobrodosli! Ovo je Splash Screen!\nZa 5 sekundi cete biti prebaceni na Login Screen");
+            intent.putExtra("text", "Dobrodosli! Ovo je Splash Screen!\n\nZa 5 sekundi cete biti prebaceni na Login Screen");
             startActivity(intent);
             return insets;
         });
