@@ -22,7 +22,7 @@ import com.example.vezbe2verzija2.databinding.ActivityMain3Binding;
 
 import java.util.concurrent.TimeUnit;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends BaseActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMain3Binding binding;
@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
         binding = ActivityMain3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+//        setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();

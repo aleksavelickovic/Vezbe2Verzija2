@@ -5,19 +5,28 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.vezbe2verzija2.databinding.ActivityHomeScreenBinding;
+
 import org.w3c.dom.Text;
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends BaseActivity {
+
+    public ActivityHomeScreenBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_home_screen);
+        binding = ActivityHomeScreenBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setTitle("TEST");
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -26,6 +35,9 @@ public class HomeScreen extends AppCompatActivity {
 
         TextView emailtext = findViewById(R.id.emailtext);
         TextView pswtext = findViewById(R.id.pswtext);
+
+        //Toolbar toolbar = binding.tulbar;
+        //setSupportActionBar(toolbar);
 
         emailtext.setText(getIntent().getStringExtra("email"));
         pswtext.setText(getIntent().getStringExtra("password"));

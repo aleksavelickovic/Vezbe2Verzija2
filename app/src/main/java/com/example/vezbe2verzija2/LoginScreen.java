@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.vezbe2verzija2.ui.login.LoginActivity;
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginScreen extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
