@@ -2,7 +2,9 @@ package com.example.vezbe2verzija2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +20,11 @@ import java.util.List;
 
 public class Products extends BaseActivity {
 
+    private boolean isFiltered = false;
+    private List<Product> allProducts = new ArrayList<>();
+    private List<Product> displayedProducts = new ArrayList<>();
+    private ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +33,67 @@ public class Products extends BaseActivity {
         setTitle("Proizvodi");
 
         ListView productsListView = findViewById(R.id.productsListView);
-        List<Product> products = new ArrayList<Product>();
-        //region Dodavanje Proizvoda...
+
+        // popuni originalnu listu
+        fillArraylist(allProducts);
+        displayedProducts.addAll(allProducts);
+
+        // adapter koji prikazuje ime proizvoda iz displayedProducts
+        adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                getProductNames(displayedProducts)
+        );
+        productsListView.setAdapter(adapter);
+
+        productsListView.setOnItemClickListener((parent, view, position, id) -> {
+            Product proizvod = displayedProducts.get(position);
+            Intent intent = new Intent(Products.this, ProductDetails.class);
+            intent.putExtra("name", proizvod.getName());
+            intent.putExtra("desc", proizvod.getDescription());
+            intent.putExtra("price", String.valueOf(proizvod.getPrice()));
+            startActivity(intent);
+        });
+
+        Button prikazitelefone = findViewById(R.id.telefonibtn);
+        prikazitelefone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayedProducts.clear();
+                if (!isFiltered) {
+                    // filtriraj samo telefone
+                    for (Product p : allProducts) {
+                        if (p.getName().equalsIgnoreCase("Telefon")) {
+                            displayedProducts.add(p);
+                        }
+                    }
+                } else {
+                    // prikaži sve proizvode
+                    displayedProducts.addAll(allProducts);
+                }
+                adapter.clear();
+                adapter.addAll(getProductNames(displayedProducts));
+                adapter.notifyDataSetChanged();
+                isFiltered = !isFiltered;
+            }
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    private List<String> getProductNames(List<Product> products) {
+        List<String> names = new ArrayList<>();
+        for (Product p : products) {
+            names.add(p.getName());
+        }
+        return names;
+    }
+
+    private void fillArraylist(List<Product> products) {
         products.add(new Product("Laptop", "Pametan laptop", 1345));
         products.add(new Product("Telefon", "Brzi telefon", 672));
         products.add(new Product("Tablet", "Gaming tablet", 1482));
@@ -53,29 +119,5 @@ public class Products extends BaseActivity {
         products.add(new Product("Headphones", "Pametan headphones", 560));
         products.add(new Product("Printer", "Gaming printer", 1310));
         products.add(new Product("Laptop", "Brzi laptop", 1175));
-        //endregion
-
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                products.stream().map(p -> p.getName()).toArray(String[]::new)
-        );
-        productsListView.setAdapter(adapter);
-
-        productsListView.setOnItemClickListener((parent, view, position, id) ->{
-            Product proizvod = products.get(position);
-            Intent intent = new Intent(Products.this, ProductDetails.class);
-            intent.putExtra("name", proizvod.getName());
-            intent.putExtra("desc", proizvod.getDescription());
-            intent.putExtra("price", String.valueOf(proizvod.getPrice()));
-            startActivity(intent);
-        });
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 }
