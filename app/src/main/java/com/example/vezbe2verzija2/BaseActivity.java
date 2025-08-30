@@ -1,5 +1,6 @@
 package com.example.vezbe2verzija2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -38,7 +39,8 @@ public class BaseActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(BaseActivity.this, "OVO JE TOAST PORUKA", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(BaseActivity.this, Products.class);
+                startActivity(intent);
             }
         });
 

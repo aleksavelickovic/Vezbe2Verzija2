@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vezbe2Verzija2">
         <activity
+            android:name=".ProductDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Products"
+            android:exported="false" />
+        <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity

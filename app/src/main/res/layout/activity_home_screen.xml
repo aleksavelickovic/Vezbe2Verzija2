@@ -53,6 +53,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/productsbutton"
+        android:layout_width="191dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="450dp"
+        android:text="@string/productsbutton" />
 
 
 </RelativeLayout>

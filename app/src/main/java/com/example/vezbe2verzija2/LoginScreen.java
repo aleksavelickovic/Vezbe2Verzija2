@@ -26,7 +26,7 @@ public class LoginScreen extends BaseActivity {
         setContentView(R.layout.activity_login_screen2);
         ActivityCompat.requestPermissions(
                 this,
-                new String[]{Manifest.permission.CAMERA},
+                new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission_group.STORAGE}, // TODO STORAGE premisioni ne rade
                 100
         );
 

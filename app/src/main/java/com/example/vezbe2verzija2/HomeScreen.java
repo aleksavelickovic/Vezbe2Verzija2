@@ -1,6 +1,9 @@
 package com.example.vezbe2verzija2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -41,5 +44,14 @@ public class HomeScreen extends BaseActivity {
 
         emailtext.setText(getIntent().getStringExtra("email"));
         pswtext.setText(getIntent().getStringExtra("password"));
+
+        Button productsbtn = binding.productsbutton;
+        productsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, Products.class);
+                startActivity(intent);
+            }
+        });
     }
 }
